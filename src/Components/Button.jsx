@@ -1,10 +1,10 @@
 import { cva } from "class-variance-authority";
 import { twMerge } from "./../../node_modules/tailwind-merge/src/lib/tw-merge";
 
-const buttonStyles = cva(["transition-colors"], {
+const buttonStyles = cva(["transition-colors cursor-pointer"], {
   variants: {
     variant: {
-      default: ["bg-secondary-default", "hover:bg-secondary-hover"],
+      default: ["bg-neutral-200", "hover:bg-neutral-300"],
       ghost: ["hover:bg-gray-100"],
     },
     size: {
