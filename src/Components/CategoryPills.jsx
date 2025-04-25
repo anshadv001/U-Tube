@@ -1,10 +1,10 @@
 import React from "react";
 import Button from "./Button";
-import { categories } from "../assets/data/home";
+import { categories } from "../data/home";
 
 const CategoryPills = () => {
   return (
-    <div className="overflow-x-auto relative [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <div className="overflow-x-auto relative [scrollbar-width:none] [&::-webkit-scrollbar]:hidden z-1">
       <div className="whitespace-nowrap gap-3 flex transition-transform w-[max-content]">
         {categories.map((category) => {
           return (

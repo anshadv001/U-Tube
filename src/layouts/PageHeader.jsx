@@ -7,20 +7,28 @@ import {
   Upload,
   User,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "./../Components/Button";
+import { SidebarContext } from "../utils/sidebarContext/contexts";
 
 const PageHeader = () => {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
+  const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
+  console.log({"fromHead" : showLargeSidebar});
+  
 
   return (
-    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 mx-4">
+    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6">
       <div
         className={`gap-4 items-center flex-shrink-0 ${
           showFullWidthSearch ? "hidden" : "flex"
         }`}
       >
-        <Button variant="ghost" size="icon">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setShowLargeSidebar(!showLargeSidebar)}
+        >
           <Menu />
         </Button>
         <img src="/src/assets/YouTube_2024.png" alt="logo" className="h-5" />
