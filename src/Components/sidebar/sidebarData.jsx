@@ -1,4 +1,19 @@
-import { Clapperboard, Clock5, Film, Flame, History, House, ListVideo, Music, Radio, Scissors, ShoppingBag, SquarePlay, ThumbsUp, TvMinimalPlay } from "lucide-react";
+import {
+  Clapperboard,
+  Clock5,
+  Film,
+  Flame,
+  History,
+  House,
+  ListVideo,
+  Music,
+  Radio,
+  Scissors,
+  ShoppingBag,
+  SquarePlay,
+  ThumbsUp,
+  TvMinimalPlay,
+} from "lucide-react";
 
 export const sidebarData = [
   {
@@ -11,7 +26,7 @@ export const sidebarData = [
         navigateTo: "",
         icon: {
           filled: "",
-          unfilled: <House size={20} strokeWidth={1.75}/>,
+          unfilled: <House size={20} strokeWidth={1.75} />,
         },
       },
       {
@@ -35,7 +50,7 @@ export const sidebarData = [
     ],
   },
   {
-    id : 2,
+    id: 2,
     sectionName: "You",
     items: [
       {
@@ -95,7 +110,7 @@ export const sidebarData = [
     ],
   },
   {
-    id : 3,
+    id: 3,
     sectionName: "Explore",
     items: [
       {

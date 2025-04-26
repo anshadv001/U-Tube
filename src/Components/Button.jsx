@@ -4,8 +4,13 @@ import { twMerge } from "./../../node_modules/tailwind-merge/src/lib/tw-merge";
 const buttonStyles = cva(["transition-colors cursor-pointer"], {
   variants: {
     variant: {
-      default: ["bg-neutral-200", "hover:bg-neutral-300"],
+      default: ["bg-neutral-100", "hover:bg-neutral-200"],
       ghost: ["hover:bg-gray-100"],
+      dark: [
+        "bg-neutral-800",
+        "hover:bg-neutral-900",
+        "text-neutral-200",
+      ]
     },
     size: {
       default: ["p-2", "rounded"],

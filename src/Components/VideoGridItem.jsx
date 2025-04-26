@@ -1,4 +1,6 @@
+import { Link } from "react-router";
 import { useFetch } from "../custom_hooks/useFetch";
+import { videos } from "../data/video";
 import { POPULAR_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./videoCard";
 
@@ -7,6 +9,7 @@ const VideoGridItem = () => {
   let itemCount = -1;
   console.log(result);
   const items = result?.data?.items;
+  const showChannelIcon = true;
 
   if (result.loading) return <div>avvvvvvv</div>;
   return (
@@ -14,8 +17,15 @@ const VideoGridItem = () => {
       {items.map((item) => {
         if (itemCount !== 9) itemCount++;
         else itemCount = 0;
+        item.missingData = {
+          duration: videos[itemCount]?.duration,
+          videoUrl: videos[itemCount].videoUrl,
+          profileUrl: videos[itemCount].profileUrl,
+        };
         return (
-          <VideoCard key={item.id} item={item} itemCount={itemCount} />
+          <Link to={"/watch?vid=" + item.id} key={item.id} state={item}>
+            <VideoCard item={item} showChannelIcon={showChannelIcon} />
+          </Link>
         );
       })}
     </div>

@@ -1,0 +1,29 @@
+[33mcommit a8ba3ac0dfb67a67dd5bf54576fb1e482804cd7d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: anshad.v <anshadv001@gmail.com>
+Date:   Fri Apr 25 10:27:26 2025 +0530
+
+    Sidebar developed. Adaptable for all screen size, also toggler on navbar
+
+[33mcommit d388292b29084b616f8bd55adb2f1db4b7867001[m
+Author: anshad.v <anshadv001@gmail.com>
+Date:   Sat Apr 12 16:34:02 2025 +0530
+
+    category pills developed
+
+[33mcommit 73195e6b89c476570d073df4ef75eb155313b830[m
+Author: anshad.v <anshadv001@gmail.com>
+Date:   Fri Apr 11 09:22:05 2025 +0530
+
+    configured packages
+
+[33mcommit c7c1e0af5b62a328b963c663445fa07a75300e9f[m
+Author: anshad.v <anshadv001@gmail.com>
+Date:   Thu Apr 10 10:43:24 2025 +0530
+
+    Header developed
+
+[33mcommit b05e3e2de0a8c2d6b64ce06a376bcb21bc28a948[m
+Author: anshad.v <anshadv001@gmail.com>
+Date:   Sat Apr 5 11:34:03 2025 +0530
+
+    first commit

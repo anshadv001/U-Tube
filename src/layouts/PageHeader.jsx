@@ -10,6 +10,7 @@ import {
 import React, { useContext, useState } from "react";
 import Button from "./../Components/Button";
 import { SidebarContext } from "../utils/sidebarContext/contexts";
+import { Link } from "react-router";
 
 const PageHeader = () => {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
@@ -31,7 +32,7 @@ const PageHeader = () => {
         >
           <Menu />
         </Button>
-        <img src="/src/assets/YouTube_2024.png" alt="logo" className="h-5" />
+        <Link to={"/"}><img src="/src/assets/YouTube_2024.png" alt="logo" className="h-5" /></Link>
       </div>
       <form
         className={`${

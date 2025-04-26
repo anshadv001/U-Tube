@@ -7,6 +7,7 @@ import { sidebarData } from "./sidebarData";
 const SmSidebar = () => {
   const { showLargeSidebar } = useContext(SidebarContext);
   const section = sidebarData[0];
+  const You = sidebarData[1];
   const { setSelected, selected } = useContext(SidebarContext);
   return (
     <div
@@ -34,10 +35,13 @@ const SmSidebar = () => {
       <Button
         variant="ghost"
         size="default"
-        className="flex flex-col gap-1 items-center justify-center  rounded-xl w-[60px] h-[75px]"
+        className={`flex flex-col gap-1 items-center justify-center  rounded-xl w-[60px] h-[75px] ${
+          selected === You.id ? "bg-neutral-200" : null
+        }`}
+        onClick={() => setSelected(You.id)}
       >
-        <User size={20} strokeWidth={1.75}/>
-        <p className="text-[9px]">Profile</p>
+        <User size={20} strokeWidth={1.75} />
+        <p className="text-[9px]">{You.sectionName}</p>
       </Button>
     </div>
   );

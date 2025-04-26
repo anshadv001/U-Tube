@@ -5,15 +5,22 @@ import { SidebarContext } from "../../utils/sidebarContext/contexts";
 // import { sidebarData } from "./sidebarData";
 
 const SidebarSection = ({ section }) => {
-  const {setSelected,selected} = useContext(SidebarContext);
+  const { setSelected, selected } = useContext(SidebarContext);
   return (
-    <div className={`flex flex-col  border-b border-gray-200 ${section.id===1 ? "pb-3" : "py-3"}`}>
+    <div
+      className={`flex flex-col  border-b border-gray-200 ${
+        section.id === 1 ? "pb-3" : "py-3"
+      }`}
+    >
       {section.sectionName ? (
         section.sectionName === "You" ? (
           <Button
             variant="ghost"
             size="default"
-            className="flex gap-2 items-center rounded-xl pl-3"
+            className={`flex gap-2 items-center rounded-xl pl-3 ${
+              selected === section.id ? "bg-neutral-200" : null
+            }`}
+            onClick={() => setSelected(section.id)}
           >
             <p className="font-semibold">You</p>
             <ChevronRight size={20} />
@@ -27,8 +34,10 @@ const SidebarSection = ({ section }) => {
           <Button
             variant="ghost"
             size="default"
-            className={`flex gap-6 items-center rounded-xl pl-3 ${item.id === selected? "bg-neutral-200" : null}`}
-            onClick={()=>setSelected(item.id)}
+            className={`flex gap-6 items-center rounded-xl pl-3 ${
+              item.id === selected ? "bg-neutral-200" : null
+            }`}
+            onClick={() => setSelected(item.id)}
             key={item.id}
           >
             {item?.icon?.unfilled}
