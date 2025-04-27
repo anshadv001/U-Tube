@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* body{
+  font-family: sans-serif;
+} */
 /* @theme {
     
           --color-secondary: colors.neutral[200];
