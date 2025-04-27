@@ -1,41 +1,37 @@
-import React, { useEffect, useRef } from "react";
-import CategoryPills from "../Components/CategoryPills";
-import VideoCard from "../Components/videoCard";
-import { useFetch } from "../custom_hooks/useFetch";
-import { POPULAR_VIDEOS_API } from "../utils/constants";
-import { categories } from "../data/home";
-import { videos } from "../data/video";
+import React, { useEffect, useRef, useState } from "react";
+import CategoryPills from "../../Components/CategoryPills";
+import VideoCard from "../../Components/videoCard";
 import { Link, useLocation, useSearchParams } from "react-router";
-import { shuffleArray } from "../utils/shuffleArray";
-import Button from "../Components/Button";
+import Button from "../../Components/Button";
 import { Download, Ellipsis, Share, ThumbsDown, ThumbsUp } from "lucide-react";
-import { formatCount } from "./../utils/formatCount";
+import { formatCount } from "../../utils/formatCount";
+import { formatDate } from "../../utils/formatDate";
+import SuggestionSection from "./suggestionSection";
 
 const WatchPage = () => {
-  const result = useFetch(POPULAR_VIDEOS_API);
-  const items = result?.data?.items;
-  const shuffledItems = shuffleArray(items || []);
   const location = useLocation();
   const video = location.state || {};
   const [searchParams] = useSearchParams();
   const vid = searchParams.get("vid");
-  console.log({ fromWatchpage: result, video: vid });
-  const showChannelIcon = false;
+  const [expanded, setExpanded] = useState(false);
 
-  let itemCount = -1;
   const divRef = useRef(null);
   useEffect(() => {
     if (divRef.current) {
       divRef.current.scrollTop = 0;
     }
+  }, [vid]);
+
+  console.log({
+    fromWatchpage: "",
+    video: vid,
+    watchReredered: divRef.current,
   });
 
-  if (result.loading) return <div>avvvvvvv</div>;
-
   return (
-    <div className="w-full overflow-auto" ref={divRef}>
+    <div className="w-auto  overflow-auto shrink-0" ref={divRef}>
       <div className="grid lg:grid-cols-12 max-w-[1300px] gap-5  self-center overflow-y-auto">
-        <div className="lg:col-span-8 w-full ">
+        <div className="lg:col-span-8 w-full">
           <iframe
             width="100%"
             height=""
@@ -48,10 +44,10 @@ const WatchPage = () => {
             allowFullScreen
             autoplay
           ></iframe>
-          <p className="text-[19px] font-semibold leading-snug mt-3 tracking-tight">
+          <p className="text-[19px] flex-wrap font-semibold leading-snug mt-3 tracking-tight">
             {video.snippet.title}
           </p>
-          <div className="flex justify-between mt-2 items-center">
+          <div className="flex justify-between mt-2 items-center max-w-full">
             <div className="flex shrink-0 gap-3 items-center">
               <div className="flex">
                 <img
@@ -109,7 +105,7 @@ const WatchPage = () => {
               <Button
                 variant="default"
                 size="default"
-                className="rounded-full text-sm px-3.5 py-2 flex gap-3 justify-center"
+                className="hidden rounded-full text-sm  px-3.5 py-2 gap-3 justify-center md:flex"
               >
                 <Download size={20} strokeWidth={1.25} />
                 <p className="text-sm font-semibold">Download</p>
@@ -127,27 +123,33 @@ const WatchPage = () => {
               </Button>
             </div>
           </div>
+          <div className="w-auto p-2 bg-neutral-100 mt-3 rounded-xl">
+            <div className="flex">
+              <p className="text-sm font-bold leading-relaxed">
+                {video.statistics.viewCount} views{" "}
+              </p>
+              <p className="text-sm font-bold pl-3">
+                {formatDate(video.snippet.publishedAt)}
+              </p>
+            </div>
+            <div
+              className={`whitespace-pre-wrap text-sm font-sans leading-relaxed relative overflow-hidden ${
+                expanded ? "line-clamp-none" : "line-clamp-3"
+              }`}
+            >
+              {video.snippet.description}
+            </div>
+            <span
+              className="text-blue-500 cursor-pointer"
+              onClick={() => setExpanded(!expanded)}
+            >
+              {" "}
+              {expanded ? "show less" : "...more"}
+            </span>
+          </div>
         </div>
         <div className="grid lg:col-span-4 gap-2">
-          <CategoryPills categories={categories} />
-          {shuffledItems.map((item) => {
-            if (itemCount !== 9) itemCount++;
-            else itemCount = 0;
-            item.missingData = {
-              duration: videos[itemCount]?.duration,
-              videoUrl: videos[itemCount].videoUrl,
-              profileUrl: videos[itemCount].profileUrl,
-            };
-            return (
-              <Link to={"/watch?vid=" + item.id} key={item.id} state={item}>
-                <VideoCard
-                  item={item}
-                  className="grid grid-cols-[1fr_3fr] lg:grid-cols-[1fr_1.5fr]"
-                  showChannelIcon={showChannelIcon}
-                />
-              </Link>
-            );
-          })}
+          <SuggestionSection />
         </div>
       </div>
     </div>

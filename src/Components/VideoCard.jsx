@@ -61,7 +61,7 @@ const VideoCard = ({ item, className, showChannelIcon }) => {
         </div>
         <div className="flex flex-col w-full">
           <div className="line-clamp-2">
-            <p className="text-sm font-semibold text-ellipsis">
+            <p className="text-sm font-semibold ">
               {item?.snippet?.localized?.title}
             </p>
           </div>

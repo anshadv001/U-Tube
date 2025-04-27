@@ -5,7 +5,7 @@ import Body from "./Body";
 
 const MainBody = () => {
   return (
-    <div className="grid grid-cols-[auto_1fr] grow overflow-auto ">
+    <div className="grid grid-cols-[auto_1fr] grow overflow-auto max-h-full">
       <Sidebar />
       <SmSidebar />
       <div className="overflow-x-hidden pb-4">

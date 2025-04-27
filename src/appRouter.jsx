@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import App from "./App";
 import MainBody from "./layouts/MainBody";
-import WatchPage from "./layouts/WatchPage";
+import WatchPage from "./layouts/Watch page/WatchPage";
 
 export const appRouter = createBrowserRouter([
     {
