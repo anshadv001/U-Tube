@@ -25,7 +25,7 @@ const WatchPage = () => {
 
   return (
     <div className="w-auto  overflow-auto shrink-0" ref={divRef}>
-      <div className="grid lg:grid-cols-12 max-w-[1300px] gap-5  self-center overflow-y-auto">
+      <div className="grid lg:grid-cols-12 max-w-[1300px] gap-5  self-center overflow-y-auto place-items-start">
         <div className="lg:col-span-8 w-full">
           <iframe
             width="100%"
