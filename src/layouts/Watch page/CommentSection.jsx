@@ -3,6 +3,7 @@ import Comment from "./comment";
 import { commentData } from "./../../data/comments";
 import Button from "../../Components/Button";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import SecondLevelComment from './SecondLevelComment';
 
 const CommentSection = () => {
   const [showReplies, setShowReplies] = useState(false);
@@ -39,16 +40,8 @@ const CommentSection = () => {
                   return (
                     <div key={reply.id} className="border-l pl-3">
                       <Comment data={reply} isReply={true} />
-                      {reply.replies.map((sreply) => {
-                        return (
-                          <Comment
-                            key={sreply.id}
-                            data={sreply}
-                            isReply={true}
-                            isSecondLevelComment={true}
-                          />
-                        );
-                      })}
+                      <SecondLevelComment comments={reply.replies}/>
+                      
                     </div>
                   );
                 })}

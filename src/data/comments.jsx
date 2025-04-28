@@ -31,7 +31,23 @@ export const commentData = [
                 id: "r1f6",
                 name: "@tara44",
                 comment: "Exactly! This video is on another level.",
-                replies: [],
+                replies: [
+                  {
+                    id: "r1i9",
+                    name: "@aditya35",
+                    comment: "True! The editing was just superb.",
+                    replies: [
+                      {
+                        id: "r1j10",
+                        name: "@meera68",
+                        comment: "Editing and storytelling, both were amazing!",
+                        replies: [],
+                        replyingTo: "@aditya35",
+                      },
+                    ],
+                    replyingTo: "@tara44",
+                  },
+                ],
                 replyingTo: "@arjun76",
               },
             ],
@@ -46,7 +62,15 @@ export const commentData = [
                 id: "r1h8",
                 name: "@rohan56",
                 comment: "Same! I watched it twice already.",
-                replies: [],
+                replies: [
+                  {
+                    id: "r1k11",
+                    name: "@priya77",
+                    comment: "Haha, me too! It’s addictive.",
+                    replies: [],
+                    replyingTo: "@rohan56",
+                  },
+                ],
                 replyingTo: "@neha21",
               },
             ],
@@ -56,7 +80,8 @@ export const commentData = [
         replyingTo: "@aarav25",
       },
     ],
-  },
+  }
+  ,
   {
     id: "c2b1",
     name: "@zara77",
