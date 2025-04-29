@@ -5,20 +5,21 @@ import { SidebarContext } from "../../utils/sidebarContext/contexts";
 import Button from "../Button";
 import { Menu } from "lucide-react";
 
-const Sidebar = () => {
+const Sidebar = ({ withLogo, display }) => {
   console.log(sidebarData[0]?.items[0]?.icon?.unfilled);
-  
 
   const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
   console.log(showLargeSidebar);
 
   return (
     <div
-      className={` flex-col max-h-full z-10  w-[240px] overflow-y-auto  bg-white ${
-        showLargeSidebar ? "absolute top-0 lg:static flex" : "hidden"
-      }`}
+      className={`${display} flex-col max-h-full z-10  w-[240px] overflow-y-auto  bg-white`}
     >
-      <div className="flex lg:hidden gap-4 items-center flex-shrink-0 mt-2">
+      <div
+        className={`gap-4 items-center flex-shrink-0 mt-2 ${
+          withLogo ? "flex" : "hidden"
+        }`}
+      >
         <Button
           variant="ghost"
           size="icon"
@@ -30,12 +31,7 @@ const Sidebar = () => {
       </div>
 
       {sidebarData.map((item) => {
-        return (
-          <SidebarSection
-            key={item.id}
-            section={item}
-          />
-        );
+        return <SidebarSection key={item.id} section={item} />;
       })}
     </div>
   );

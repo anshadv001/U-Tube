@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "../Components/sidebar/sidebar";
 import SmSidebar from "../Components/sidebar/SmSidebar";
 import Body from "./Body";
+import SidebarModal from "../Components/sidebar/SidebarModal";
+import { SidebarContext } from "./../utils/sidebarContext/contexts";
 
 const MainBody = () => {
+  const { showLargeSidebar } = useContext(SidebarContext);
+  console.log({ shwL: showLargeSidebar });
+
   return (
     <div className="grid grid-cols-[auto_1fr] grow overflow-auto max-h-full">
-      <Sidebar />
+      {showLargeSidebar && (
+        <>
+          <Sidebar withLogo={false} display="hidden lg:flex" />
+          <SidebarModal display="flex lg:hidden" />
+        </>
+      )}
       <SmSidebar />
       <div className="overflow-x-hidden pb-4">
         <Body />
@@ -16,5 +26,3 @@ const MainBody = () => {
 };
 
 export default MainBody;
-
-
