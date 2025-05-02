@@ -1,9 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import SuggestionSection from "./suggestionSection";
 import DescriptionSection from "./DescriptionSection";
 import VideoActionBar from "./VideoActionBar";
 import CommentSection from "./CommentSection";
+import SidebarModal from "../../Components/sidebar/SidebarModal";
+import { SidebarContext } from "../../utils/sidebarContext/contexts";
 
 const WatchPage = () => {
   const location = useLocation();
@@ -17,15 +19,15 @@ const WatchPage = () => {
     }
   }, [vid]);
 
-  console.log({
-    fromWatchpage: "",
-    video: vid,
-    watchReredered: divRef.current,
-  });
+  const { showLargeSidebar , setShowLargeSidebar } = useContext(SidebarContext);
+  useEffect(()=>{
+    setShowLargeSidebar(false);
+  },[])
 
   return (
-    <div className="w-auto  overflow-auto shrink-0" ref={divRef}>
-      <div className="grid lg:grid-cols-12 max-w-[1300px] gap-5  self-center overflow-y-auto place-items-start">
+    <div className="w-auto  overflow-auto shrink-0">
+      {showLargeSidebar && <SidebarModal />}
+      <div className="grid lg:grid-cols-12 max-w-[1300px] mx-auto gap-5 overflow-y-auto place-items-start">
         <div className="lg:col-span-8 w-full">
           <iframe
             width="100%"
@@ -46,7 +48,7 @@ const WatchPage = () => {
           <DescriptionSection video={video} />
           <CommentSection />
         </div>
-        <div className="grid lg:col-span-4 gap-2">
+        <div className="grid lg:col-span-4 gap-2 pb-4">
           <SuggestionSection />
         </div>
       </div>

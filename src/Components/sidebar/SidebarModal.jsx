@@ -2,12 +2,13 @@ import { useContext } from "react";
 import Sidebar from "./sidebar";
 import ReactDOM from "react-dom";
 import { SidebarContext } from "../../utils/sidebarContext/contexts";
+import { twMerge } from 'tailwind-merge';
 
 const SidebarModal = ({ display }) => {
   const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
 
   return ReactDOM.createPortal(
-    <div className={`fixed inset-0 z-10 ${display}`}>
+    <div className={twMerge("flex fixed inset-0 z-50",display)}>
       <div>
         <Sidebar withLogo={true} display="flex ml-4" />
       </div>

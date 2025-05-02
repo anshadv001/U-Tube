@@ -23,7 +23,7 @@ export const sidebarData = [
       {
         id: 11,
         itemName: "Home",
-        navigateTo: "",
+        navigateTo: '/',
         icon: {
           filled: "",
           unfilled: <House size={20} strokeWidth={1.75} />,

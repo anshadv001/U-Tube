@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { SidebarContext } from './contexts';
 
 const SidebarContextWrapper = ({ children }) => {
-    const [showLargeSidebar, setShowLargeSidebar] = useState(true);
+    const [showLargeSidebar, setShowLargeSidebar] = useState(false);
     const [selected, setSelected] = useState(11);
   
     return (

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import Button from "../Button";
 import { ChevronRight } from "lucide-react";
 import { SidebarContext } from "../../utils/sidebarContext/contexts";
+import { Link } from "react-router";
 // import { sidebarData } from "./sidebarData";
 
 const SidebarSection = ({ section }) => {
@@ -31,18 +32,20 @@ const SidebarSection = ({ section }) => {
       ) : null}
       {section.items.map((item) => {
         return (
-          <Button
-            variant="ghost"
-            size="default"
-            className={`flex gap-6 items-center rounded-xl pl-3 ${
-              item.id === selected ? "bg-neutral-200" : null
-            }`}
-            onClick={() => setSelected(item.id)}
-            key={item.id}
-          >
-            {item?.icon?.unfilled}
-            {item?.itemName}
-          </Button>
+          <Link to={item.navigateTo} key={item.id}>
+            <Button
+              variant="ghost"
+              size="default"
+              className={`w-full flex gap-6 items-center rounded-xl pl-3 ${
+                item.id === selected ? "bg-neutral-200" : null
+              }`}
+              onClick={() => setSelected(item.id)}
+              
+            >
+              {item?.icon?.unfilled}
+              {item?.itemName}
+            </Button>
+          </Link>
         );
       })}
     </div>
