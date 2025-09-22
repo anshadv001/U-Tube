@@ -48,7 +48,7 @@ const PageHeader = () => {
           <img
             src="/src/assets/YT-logo.png"
             alt="logo"
-            className="h-5 bg-amber-600"
+            className="h-5"
           />
         </Link>
       </div>
