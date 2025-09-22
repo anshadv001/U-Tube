@@ -8,10 +8,10 @@ const DescriptionSection = ({video}) => {
     <div className="w-auto p-2 bg-neutral-100 mt-3 rounded-xl">
             <div className="flex">
               <p className="text-sm font-bold leading-relaxed">
-                {video.statistics.viewCount} views{" "}
+                {video?.statistics?.viewCount} views{" "}
               </p>
               <p className="text-sm font-bold pl-3">
-                {formatDate(video.snippet.publishedAt)}
+                {formatDate(video?.snippet?.publishedAt)}
               </p>
             </div>
             <div
@@ -19,7 +19,7 @@ const DescriptionSection = ({video}) => {
                 expanded ? "line-clamp-none" : "line-clamp-3"
               }`}
             >
-              {video.snippet.description}
+              {video?.snippet?.description}
             </div>
             <span
               className="text-blue-500 cursor-pointer"

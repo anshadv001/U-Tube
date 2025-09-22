@@ -4,7 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import { RouterProvider } from "react-router-dom";
 import { appRouter } from "./appRouter.jsx";
+import { Provider } from "react-redux";
+import appStore from "./utils/ReduxStore/appStore.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={appRouter} />
+  <Provider store={appStore}>
+    <RouterProvider router={appRouter} />
+  </Provider>
 );

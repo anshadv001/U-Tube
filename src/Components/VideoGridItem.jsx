@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { useFetch } from "../custom_hooks/useFetch";
 import { videos } from "../data/video";
 import { POPULAR_VIDEOS_API } from "../utils/constants";
@@ -20,7 +19,7 @@ const VideoGridItem = () => {
   const fullRendered = useRef(false);
   useEffect(() => {
     if (inView) {
-      const { paginatedData, listCompleted } = infiniteScroll({
+      const { paginatedData, islistCompleted } = infiniteScroll({
         fullData: items,
         currentPage: ++currentPage.current,
         itemsPerPage: 12,
@@ -28,7 +27,7 @@ const VideoGridItem = () => {
       setTimeout(() => {
         setItemsToRender((prev) => [...prev, ...paginatedData]);
       }, 300);
-      fullRendered.current = listCompleted;
+      fullRendered.current = islistCompleted;
     }
   }, [inView, items]);
 
@@ -45,9 +44,11 @@ const VideoGridItem = () => {
             profileUrl: videos[itemCount].profileUrl,
           };
           return (
-            <Link to={"/watch?vid=" + item.id} key={item.id} state={item}>
-              <VideoCard item={item} showChannelIcon={showChannelIcon} />
-            </Link>
+            <VideoCard
+              key={item.id}
+              item={item}
+              showChannelIcon={showChannelIcon}
+            />
           );
         })}
       </div>

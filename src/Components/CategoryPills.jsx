@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const CategoryPills = ({categories}) => {
   return (
-    <div className="overflow-x-auto relative [scrollbar-width:none] [&::-webkit-scrollbar]:hidden z-1">
+    <div className="overflow-x-auto relative [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <div className="whitespace-nowrap gap-3 flex transition-transform w-[max-content]">
         {categories.map((category) => {
           return (

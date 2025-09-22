@@ -5,7 +5,6 @@ import { POPULAR_VIDEOS_API } from "../../utils/constants";
 import { useFetch } from "../../custom_hooks/useFetch";
 import { shuffleArray } from "./../../utils/shuffleArray";
 import CategoryPills from "./../../Components/CategoryPills";
-import { Link } from "react-router";
 import VideoCard from "../../Components/videoCard";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useRef, useState } from "react";
@@ -39,7 +38,10 @@ const SuggestionSection = () => {
 
   return (
     <>
-      <CategoryPills categories={categories} />
+      <div className="w-full">
+        <CategoryPills categories={categories} />
+      </div>
+{/*  */}
       {itemsToRender.map((item) => {
         if (itemCount.current !== 9) itemCount.current++;
         else itemCount.current = 0;
@@ -50,13 +52,12 @@ const SuggestionSection = () => {
         };
         return (
           <>
-            <Link to={"/watch?vid=" + item.id} key={item.id} state={item}>
-              <VideoCard
-                item={item}
-                className="grid grid-cols-[1fr_3fr] lg:grid-cols-[1fr_1.5fr]"
-                showChannelIcon={false}
-              />
-            </Link>
+            <VideoCard
+              key={item.id}
+              item={item}
+              className="grid grid-cols-[1fr_3fr] lg:grid-cols-[1fr_1.5fr]"
+              showChannelIcon={false}
+            />
           </>
         );
       })}

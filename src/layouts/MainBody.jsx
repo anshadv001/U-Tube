@@ -4,6 +4,7 @@ import SmSidebar from "../Components/sidebar/SmSidebar";
 import Body from "./Body";
 import SidebarModal from "../Components/sidebar/SidebarModal";
 import { SidebarContext } from "./../utils/sidebarContext/contexts";
+import { Outlet } from "react-router";
 
 const MainBody = () => {
   const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
@@ -14,7 +15,7 @@ const MainBody = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-[auto_1fr] grow overflow-auto max-h-full">
+    <div className="grid grid-cols-[auto_1fr] grow overflow-auto h-full">
       {showLargeSidebar && (
         <>
           <Sidebar withLogo={false} display="hidden lg:flex" />
@@ -22,9 +23,9 @@ const MainBody = () => {
         </>
       )}
       <SmSidebar />
-      <div className="overflow-x-hidden pb-4">
-        <Body />
-      </div>
+      {/* <div className="overflow-x-hidden pb-4"> */}
+        <Outlet/>
+      {/* </div> */}
     </div>
   );
 };

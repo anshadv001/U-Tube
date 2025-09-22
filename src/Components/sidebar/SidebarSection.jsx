@@ -2,11 +2,17 @@ import React, { useContext } from "react";
 import Button from "../Button";
 import { ChevronRight } from "lucide-react";
 import { SidebarContext } from "../../utils/sidebarContext/contexts";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 // import { sidebarData } from "./sidebarData";
 
 const SidebarSection = ({ section }) => {
   const { setSelected, selected } = useContext(SidebarContext);
+  const navigate = useNavigate();
+
+  const handleClick = (item,e)=>{
+    setSelected(item.id)
+    item.navigateTo ? navigate(item.navigateTo) : e.preventDefault()
+  }
   return (
     <div
       className={`flex flex-col  border-b border-gray-200 ${
@@ -32,20 +38,20 @@ const SidebarSection = ({ section }) => {
       ) : null}
       {section.items.map((item) => {
         return (
-          <Link to={item.navigateTo} key={item.id}>
+          // <Link to={item.navigateTo} key={item.id}>
             <Button
               variant="ghost"
               size="default"
               className={`w-full flex gap-6 items-center rounded-xl pl-3 ${
                 item.id === selected ? "bg-neutral-200" : null
               }`}
-              onClick={() => setSelected(item.id)}
+              onClick={(e) => handleClick(item,e)}
               
             >
               {item?.icon?.unfilled}
               {item?.itemName}
             </Button>
-          </Link>
+          // </Link>
         );
       })}
     </div>

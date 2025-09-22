@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import SuggestionSection from "./suggestionSection";
 import DescriptionSection from "./DescriptionSection";
@@ -6,28 +6,27 @@ import VideoActionBar from "./VideoActionBar";
 import CommentSection from "./CommentSection";
 import SidebarModal from "../../Components/sidebar/SidebarModal";
 import { SidebarContext } from "../../utils/sidebarContext/contexts";
+import { addToWatchHistory } from "../History/addToWatchHistory";
 
 const WatchPage = () => {
   const location = useLocation();
-  const video = location.state || {};
+  const item = location.state?.item || {};
   const [searchParams] = useSearchParams();
   const vid = searchParams.get("vid");
-  const divRef = useRef(null);
   useEffect(() => {
-    if (divRef.current) {
-      divRef.current.scrollTop = 0;
-    }
+    addToWatchHistory(item);
+    window.scrollTo(0, 0);
   }, [vid]);
 
-  const { showLargeSidebar , setShowLargeSidebar } = useContext(SidebarContext);
-  useEffect(()=>{
+  const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
+  useEffect(() => {
     setShowLargeSidebar(false);
-  },[])
+  }, []);
 
   return (
-    <div className="w-auto  overflow-auto shrink-0">
+    <div className="w-full shrink-0 max-w-[1300px] mx-auto">
       {showLargeSidebar && <SidebarModal />}
-      <div className="grid lg:grid-cols-12 max-w-[1300px] mx-auto gap-5 overflow-y-auto place-items-start">
+      <div className="lg:grid lg:grid-cols-12 gap-5 overflow-y-auto place-items-start">
         <div className="lg:col-span-8 w-full">
           <iframe
             width="100%"
@@ -42,13 +41,13 @@ const WatchPage = () => {
             autoplay
           ></iframe>
           <p className="text-[19px] flex-wrap font-semibold leading-snug mt-3 tracking-tight">
-            {video.snippet.title}
+            {item?.snippet?.title}
           </p>
-          <VideoActionBar video={video} />
-          <DescriptionSection video={video} />
+          <VideoActionBar video={item} />
+          <DescriptionSection video={item} />
           <CommentSection />
         </div>
-        <div className="grid lg:col-span-4 gap-2 pb-4">
+        <div className="flex flex-col lg:col-span-4 w-full gap-2 pb-4">
           <SuggestionSection />
         </div>
       </div>

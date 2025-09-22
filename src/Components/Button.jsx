@@ -35,6 +35,7 @@ const Button = ({ variant, size, className, ...props }) => {
   return (
     <button
       {...props}
+      type="button"
       className={twMerge(buttonStyles({ variant, size }), className)}
     />
   );

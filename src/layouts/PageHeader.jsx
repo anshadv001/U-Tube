@@ -11,15 +11,27 @@ import React, { useContext, useState } from "react";
 import Button from "./../Components/Button";
 import { SidebarContext } from "../utils/sidebarContext/contexts";
 import { Link } from "react-router";
+import CentreModal from "./Modals/CentreModal";
+import SignoutComp from "./Sign/SignoutComp";
 
 const PageHeader = () => {
   const [showFullWidthSearch, setShowFullWidthSearch] = useState(false);
+  const [showSignoutComp, setShowSignoutComp] = useState(false);
+
   const { showLargeSidebar, setShowLargeSidebar } = useContext(SidebarContext);
-  console.log({"fromHead" : showLargeSidebar});
-  
+  console.log({ fromHead: showLargeSidebar });
+
+  const onClose = () => {
+    setShowSignoutComp(false);
+  };
+
+  // const navigate = useNavigate();
+  const handleSignOut = () => {
+    setShowSignoutComp(true);
+  };
 
   return (
-    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6">
+    <div className="flex gap-10 lg:gap-20 justify-between pt-2 mb-6 z-50">
       <div
         className={`gap-4 items-center flex-shrink-0 ${
           showFullWidthSearch ? "hidden" : "flex"
@@ -32,7 +44,13 @@ const PageHeader = () => {
         >
           <Menu />
         </Button>
-        <Link to={"/"}><img src="/src/assets/YouTube_2024.png" alt="logo" className="h-5" /></Link>
+        <Link to={"/"}>
+          <img
+            src="/src/assets/YT-logo.png"
+            alt="logo"
+            className="h-5 bg-amber-600"
+          />
+        </Link>
       </div>
       <form
         className={`${
@@ -87,10 +105,15 @@ const PageHeader = () => {
         <Button variant="ghost" size="icon">
           <BellIcon />
         </Button>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" onClick={() => handleSignOut()}>
           <User />
         </Button>
       </div>
+      {showSignoutComp && (
+        <CentreModal onClose={onClose}>
+          <SignoutComp setShowSignoutComp={setShowSignoutComp} />
+        </CentreModal>
+      )}
     </div>
   );
 };

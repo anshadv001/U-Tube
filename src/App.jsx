@@ -1,16 +1,16 @@
-import MainBody from "./layouts/MainBody";
 import PageHeader from "./layouts/PageHeader";
-import WatchPage from "./layouts/Watch page/WatchPage";
 import SidebarContextWrapper from "./utils/sidebarContext/SidebarContextWrapper";
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+import AuthObserver from "./Components/AuthObserver";
 
 function App() {
   return (
     <SidebarContextWrapper>
-      <div className="max-h-screen max-w-screen flex flex-col mx-4 relative">
+      <div className="max-h-screen max-w-screen flex flex-col mx-4 ">
         <PageHeader />
-        <Outlet/>
-      </div>
+        <Outlet />
+      </div>      
+      <AuthObserver />
     </SidebarContextWrapper>
   );
 }

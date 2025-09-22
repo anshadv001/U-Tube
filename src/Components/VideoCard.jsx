@@ -3,6 +3,7 @@ import { formatDuration } from "../utils/formatDuration";
 import { formatCount } from "../utils/formatCount";
 import { getTimeAgo } from "../utils/getTimeAgo";
 import { twMerge } from "tailwind-merge";
+import { useNavigate } from "react-router";
 
 const VideoCard = ({ item, className, showChannelIcon }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -24,8 +25,16 @@ const VideoCard = ({ item, className, showChannelIcon }) => {
     }
   };
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/watch?vid=" + item.id, { state: { item } });
+  };
+
   return (
-    <div className={twMerge("flex flex-col gap-2", className)}>
+    <div
+      className={twMerge("flex flex-col gap-2", className)}
+      onClick={()=>handleClick()}
+    >
       <div
         className={`relative aspect-video  overflow-hidden transition-[border-radius] duration-400 ${
           isVideoPlaying ? "rounded-0 transition-bo" : "rounded-xl"
@@ -52,7 +61,11 @@ const VideoCard = ({ item, className, showChannelIcon }) => {
         />
       </div>
       <div className="flex mt-2 gap-2 items-start">
-        <div className={`items-start justify-center  shrink-0 ${showChannelIcon ? "flex" : "hidden"}`}>
+        <div
+          className={`items-start justify-center  shrink-0 ${
+            showChannelIcon ? "flex" : "hidden"
+          }`}
+        >
           <img
             src={item?.missingData?.profileUrl}
             alt="Profile Photo"

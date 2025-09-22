@@ -13,7 +13,7 @@ const Sidebar = ({ withLogo, display }) => {
 
   return (
     <div
-      className={`${display} flex-col max-h-full z-10  w-[240px] overflow-y-auto  bg-white`}
+      className={`${display} flex-col h-full w-[240px] overflow-y-auto  bg-white`}
     >
       <div
         className={`gap-4 items-center flex-shrink-0 mt-2 ${
