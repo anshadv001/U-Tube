@@ -1,12 +1,23 @@
-# React + Vite
+🎬 YouTube Clone – Video Streaming App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A YouTube-like video streaming platform built with React.js, Redux, and React Router, featuring video browsing, search, and watch history. Deployed on Firebase Hosting.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔑 Firebase Authentication (Login/Sign-up)
 
-## Expanding the ESLint configuration
+📺 Video feed from YouTube Data API
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📜 Infinite scroll & pagination with react-intersection-observer
+
+🔍 Debounced search with caching
+
+🎞 Watch history saved in Firebase Firestore
+
+⚡ Optimized with lazy loading, React.memo, useMemo, useCallback
+
+📱 Responsive UI with Tailwind CSS
+
+🛠 Tech Stack
+
+React.js, Redux, React Router, Tailwind CSS, Firebase (Auth, Firestore, Hosting), YouTube Data API
